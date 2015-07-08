@@ -44,7 +44,7 @@ class scf_Fields {
 	            'exclude'       => $item['exclude'],
 	            'type'          => $item['type'],
 	            'options'       => $item['options'],
-	            'value'         => (isset($_POST[$newslug]) && !$ignorevalues ? $_POST[$newslug] : ''),
+	            'value'         => (isset($_POST[$newslug]) && !$ignorevalues ? $_POST[$newslug] : '')
 	        );
 
 	        $i++;

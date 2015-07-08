@@ -58,7 +58,7 @@ class scf_FormValidation {
 			if( !$field['value'] && $field['required'] ) {
 
 				// Add this error to the error array
-				$errors[] = ($field['error_title'] ? $field['error_title'] : $field['title']) . ' is required.';
+				$errors[] = (isset($field['error_title']) ? $field['error_title'] : $field['title']) . ' is required.';
 
 			} else {
 

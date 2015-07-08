@@ -106,6 +106,7 @@
 				'<td class="column-col_link_id form-field handle">' + rN + '</td>' +
 				'<td class="column-col_link_label form-field"><input type="text" value="' + vals['label'] + '" class="all-options" name="fields['+rN+'][label]" /></td>' +
 				'<td class="column-col_link_type form-field"><select class="type-field" name="fields['+rN+'][type]" value="' + vals['type'] + '" id="">' +
+					'<option value="checkbox"' + (vals['type'] == 'checkbox' ? ' selected' : '') + '>Checkbox' +
 					'<option value="select"' + (vals['type'] == 'select' ? ' selected' : '') + '>Dropdown' +
 					'<option value="email"' + (vals['type'] == 'email' ? ' selected' : '') + '>Email Address' +
 					'<option value="textarea"' + (vals['type'] == 'textarea' ? ' selected' : '') + '>Large Text Block' +

@@ -102,7 +102,7 @@ class scf_Content {
 					                    if($options['labels'] && $item['type'] != 'checkbox') {
 
 					                    	// Set the label
-					                        $content .= '<label class="row-item col-md-3 control-label" for="'.$item['slug'].'"><span>'.$item['title'].($item['required'] ? ' *' : '').'</span></label>';
+					                        $content .= '<label class="row-item col-md-3" for="'.$item['slug'].'"><span>'.$item['title'].($item['required'] ? ' *' : '').'</span></label>';
 
 					                        // Set the next classes and offsets
 					                        $nextclass = 'col-md-9';
@@ -133,7 +133,7 @@ class scf_Content {
 
 					                        $content .= '<div class="row-item">';
 
-					                        	$content .= '<label class="row-item '.$nextclass.' '.$offset.' control-label checkbox" for="'.$item['slug'].'">';
+					                        	$content .= '<label class="row-item '.$nextclass.' '.$offset.' checkbox" for="'.$item['slug'].'">';
 
 					                        		$content .= '<input name="'.$item['slug'].'" id="'.$item['slug'].'" type="checkbox" value="Yes" checked="'.$item['value'].'">';
 

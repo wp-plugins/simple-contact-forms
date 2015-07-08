@@ -156,6 +156,10 @@ class simple_contact_forms_Admin {
 
 	}
 
+	public function jquery_ui_sortable() {
+		return true;
+	}
+
 }
 
 function simple_contact_forms_options() {

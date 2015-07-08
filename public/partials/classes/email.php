@@ -24,8 +24,19 @@ class scf_Email {
 	 */
 	public function addToEmailContents($field) {
 
-        // Set email contents from the value (only used if the form is correct and ready to send)
-        $this->emailcontent .= $field['title'].': '.$field['value'].'<br />';
+        // Set the value to use
+        if( $field['type'] == 'checkbox' ) {
+
+            $value = $field['value'] ? 'Yes' : 'No';
+
+        } else {
+
+            $value = isset($field['value']) ? $field['value'] : '';
+
+        }
+
+        // Set email contents from the value
+        $this->emailcontent .= $field['title'].': '.$value.'<br />';
 
 	}
 
@@ -53,33 +64,53 @@ class scf_Email {
 
         // Determine the from details. Check for name field, then email field, then default to 'Enquirer'
         foreach($fields as $field) {
-        	if( $field['type'] == 'name' && isset($field['value']) ) {
-        		$sender_name = $field['value'];
-        	}
-            if( $field['type'] == 'email' && isset($field['value']) ) {
-                $sender_email = $field['value'];
-            }
+
+        	if( $field['type'] == 'name' && isset($field['value']) ) $sender_name = $field['value'];
+
+            if( $field['type'] == 'email' && isset($field['value']) ) $sender_email = $field['value'];
         }
 
         // Set the from details
-        $headers .= 'From: ' . (!empty($sender_name) ? $sender_name : 'Enquirer') . ' <' . (!empty($sender_email) ? $sender_email : '') . '>' . "\r\n";;
+        $headers .= 'From: ' . (!empty($sender_name) ? $sender_name : 'Enquirer') . ' <' . (!empty($sender_email) ? $sender_email : '') . '>' . "\r\n";
 
-        // Set the field content
+        // Set the name checker
+        $nameIsAbandon = false;
+
+        // Cycle through the fields
         foreach($fields as $field) {
-        	if($field['slug']!=='maths') $this->addToEmailContents($field);
+
+            // Set the field content
+        	if( $field['slug']!=='maths' && $field['exclude'] !== true ) $this->addToEmailContents($field);
+
+            // Skip this if the name field contains the words "ABANDON" only
+            if( $field['type']=='name' && $field['value'] == "ABANDON" ) $nameIsAbandon = true;
+
         }
 
-        // Send the email for each sender
-        foreach($senders as $sendingemail) {
-            mail(
-            	$sendingemail['email'], 
-            	$subject, 
-            	$this->emailcontent, 
-            	$headers
-        	);
-        };
+        // See if we need to abandon
+        if( $nameIsAbandon === true ) {
 
-        // Output success message
+            // Dump the contents for analysis
+            var_dump(
+                $senders,
+                $subject, 
+                $this->emailcontent
+            );
+
+        } else {
+
+            // Send the email for each sender
+            foreach($senders as $sendingemail) {
+                mail(
+                	$sendingemail['email'], 
+                	$subject, 
+                	$this->emailcontent, 
+                	$headers
+            	);
+            };
+
+        }
+
 	}
 
 
