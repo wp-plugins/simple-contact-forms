@@ -220,6 +220,9 @@ class scf_Content {
 		                
 		                };
 
+		                // Clear the floating for the form so far
+		                $content .= '<div class="clearfix"></div>';
+
 		                // Add the hidden items and submit page. Opening the form group
 		                $content .= '<div class="form-group">';
 
@@ -236,7 +239,7 @@ class scf_Content {
 			                        $content .= '<input type="hidden" name="email_subject" value="'.$options['email_subject'].'">';
 
 			                		// Set the form title hidden input
-			                        $content .= '<input type="hidden" name="email_subject" value="'.$options['form_title'].'">';
+			                        $content .= '<input type="hidden" name="form_title" value="'.htmlentities($options['form_title']).'">';
 
 			                		// Set the submit button
 			                        $content .= '<button type="submit" class="btn btn-primary btn-block">Submit</button>';
