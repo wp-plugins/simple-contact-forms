@@ -5,6 +5,7 @@ class SCFOptions {
 
 	private $options;
 	private $fields;
+	private $defaultFields;
 	
 
 	function __construct() {
@@ -32,6 +33,23 @@ class SCFOptions {
 			'button_icon'			=> 'fa-comments' ,
 			'recaptcha_public'		=> '' ,
 			'recaptcha_private'		=> '' ,
+		);
+
+		$this->defaultFields = array(
+    		'1' => array(
+	            'label' => 'Email Address',
+	            'type' => 'email',
+	            'options' => array(),
+	            'required' => 1,
+	            'exclude' => false
+        	),
+		    '2' => array(
+	            'label' => 'Enquiry',
+	            'type' => 'textarea',
+	            'options' => array(),
+	            'required' => 1,
+	            'exclude' => false
+	        )
 		);
 
 	}
@@ -132,12 +150,21 @@ class SCFOptions {
 
 	public function get() {
 
+		// Get each option
 		foreach($this->fields as $field => $default) {
 
 			$this->options[$field] = $this->getif( $field, $default );
 
 		}
 
+		// Set the fields if it's the first time
+		if( !$this->getif('table_fields') ) {
+
+			update_option('scf_table_fields', maybe_serialize($this->defaultFields) );
+
+		}
+			
+		// Get the fields
 		$this->options['fields'] = maybe_unserialize( $this->getif('table_fields') );
 
 		return $this->options;

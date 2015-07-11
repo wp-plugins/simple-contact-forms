@@ -194,6 +194,7 @@ $wp_list_table->prepare_items();
 									Button Text 
 									<input type="text" name="button_text" id="button_text" value="<?=$vals['button_text']?>" class="regular-text">
 								</label>
+								<br>
 								<label for="button_class">
 									Additional Button Classes
 									<input type="text" name="button_class" id="button_class" value="<?=$vals['button_class']?>" class="regular-text">
@@ -228,6 +229,7 @@ $wp_list_table->prepare_items();
 					<td>
 						<select name="send_to" id="send_to" class="postform" value="<?=$vals['send_to']?>">
 							<option value="" <?=($vals['send_to']==''?'selected':'')?>>Same Page as form (default)
+							<option disabled>---
 							<?php 
 
 							$cpt = get_post_types(

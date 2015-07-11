@@ -293,7 +293,6 @@ class scf_Content {
 	    	$actions = 'href="'.$options['send_to_url'].'"';
 	    }
 
-
     	$content = '<a class="btn btn-block ' . $options['btn_class'] . '" '. $actions . '>';
 
 		    // Set the button contents
