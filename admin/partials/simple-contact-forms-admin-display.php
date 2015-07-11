@@ -228,25 +228,33 @@ $wp_list_table->prepare_items();
 					<td>
 						<select name="send_to" id="send_to" class="postform" value="<?=$vals['send_to']?>">
 							<option value="" <?=($vals['send_to']==''?'selected':'')?>>Same Page as form (default)
-							<option disabled>---
 							<?php 
-								$pages = get_pages(); 
-								foreach ( $pages as $page ) {
-								  	$option = '<option value="' . get_page_link( $page->ID ) . '" '. ($vals['send_to']==get_page_link( $page->ID )?'selected':'') . '>';
-									$option .= $page->post_title;
-									$option .= '</option>';
-									echo $option;
-							 	}
-							?>
-							<option disabled>---
-							<?php 
-								$posts = get_posts(); 
+
+							$cpt = get_post_types(
+								array(
+									'_builtin'	=> false,
+									'public'	=> true
+								),
+								'names',
+								'and'
+							);
+
+							array_unshift($cpt, 'post', 'page');
+
+							foreach ( $cpt as $pt ) {
+
+								if(count($cpt) > 0) echo '<option disabled>---';
+
+								$posts = get_posts( array('post_type' =>$pt) ); 
 								foreach ( $posts as $page ) {
 								  	$option = '<option value="' . get_page_link( $page->ID ) . '" '. ($vals['send_to']==get_page_link( $page->ID )?'selected':'') . '>';
 									$option .= $page->post_title;
 									$option .= '</option>';
 									echo $option;
 							 	}
+
+							}
+
 							?>
 						</select>
 						<p class="description">Select what page the user should be sent to after completing. If the form shortcode or function is present then the success message will be shown.</p>
