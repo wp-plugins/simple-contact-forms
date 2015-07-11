@@ -134,6 +134,16 @@ $wp_list_table->prepare_items();
 					</tr>
 				</div>
 				<tr>
+					<th></th>
+					<td>
+						<label for="submit_class">
+							Submit Button Additional Classes
+							<input type="text" name="submit_class" id="submit_class" value="<?=$vals['submit_class']?>" class="regular-text">
+							<p class="description">i.e. btn-primary</p>
+						</label>
+					</td>
+				</tr>
+				<tr>
 					<th scope="row">Form Validation Settings</th>
 					<td>
 						<fieldset>
@@ -183,6 +193,11 @@ $wp_list_table->prepare_items();
 								<label for="button_text">
 									Button Text 
 									<input type="text" name="button_text" id="button_text" value="<?=$vals['button_text']?>" class="regular-text">
+								</label>
+								<label for="button_class">
+									Additional Button Classes
+									<input type="text" name="button_class" id="button_class" value="<?=$vals['button_class']?>" class="regular-text">
+									<p class="description">i.e. btn-primary</p>
 								</label>
 								<br>
 								<label for="button_icon_side">Show an icon in the button 

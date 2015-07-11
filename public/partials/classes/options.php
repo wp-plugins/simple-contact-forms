@@ -98,6 +98,9 @@ class scf_Options {
 		// Does the FontAwesome CDN need to be included?
 		$arr['include_fontawesome'] = get_option('scf_include_fontawesome', ($arr['form_styling'] == 'bootstrap' ? true : false) );
 
+		// Get the extra class for the submit button
+		$arr['submit_class'] = get_option('scf_submit_class', '');
+
 		// Get the success message
 		$arr['success_msg'] = get_option('scf_success_msg', 'Thanks!');
 
@@ -112,6 +115,9 @@ class scf_Options {
 
 		// Get the text for the button
 		$arr['btn_text'] = get_option('scf_button_text', 'Get in touch now');
+
+		// Get the extra class for the button
+		$arr['btn_class'] = get_option('scf_button_class', '');
 
 		// Get the button icon side
 		$arr['btn_icon_side'] = get_option('scf_button_side', 'left');

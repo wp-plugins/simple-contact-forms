@@ -242,7 +242,7 @@ class scf_Content {
 			                        $content .= '<input type="hidden" name="form_title" value="'.htmlentities($options['form_title']).'">';
 
 			                		// Set the submit button
-			                        $content .= '<button type="submit" class="btn btn-primary btn-block">Submit</button>';
+			                        $content .= '<button type="submit" class="btn btn-block ' . $options['submit_class'] . '">Submit</button>';
 
 		                        // Close the column
 			                	$content .= '</div>';
@@ -294,7 +294,7 @@ class scf_Content {
 	    }
 
 
-    	$content = '<a class="btn btn-primary btn-block" '. $actions .'>';
+    	$content = '<a class="btn btn-block ' . $options['btn_class'] . '" '. $actions . '>';
 
 		    // Set the button contents
 		    $content .= $options['btn_text'];
