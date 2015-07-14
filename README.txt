@@ -3,7 +3,7 @@ Contributors: owenr88
 Tags: contact forms, enquiry forms, contact, forms
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,9 @@ Yes. Head over to the [GitHub](https://github.com/owenr88/Simple-Contact-Forms) 
 4. Form output
 
 == Changelog ==
+
+= 1.0.4 =
+* Bug fixes on the send to URL in the settings
 
 = 1.0.3 =
 * Allow additional classes for buttons

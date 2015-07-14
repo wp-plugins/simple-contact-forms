@@ -1,10 +1,10 @@
 <?php
-class scf_wpb_widget extends WP_Widget {
+class scf_widget extends WP_Widget {
 
     function __construct() {
         parent::__construct(
             // Base ID of your widget
-            'scf_wpb_widget', 
+            'scf_widget', 
 
             // Widget name will appear in UI
             __('Simple Contact Forms', 'scf_enquiry_form'), 
@@ -99,6 +99,6 @@ class scf_wpb_widget extends WP_Widget {
 
     }
 
-} // Class wpb_widget ends here
+} // Class scf_widget ends here
 
-register_widget( 'scf_wpb_widget' );
+register_widget( 'scf_widget' );
