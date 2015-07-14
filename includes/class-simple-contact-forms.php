@@ -230,6 +230,7 @@ class simple_contact_forms {
 	 */
     public function shortcode($sc_options = array())
     {
+    	$sc_options['return'] = true;
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/partials/simple-contact-forms-public-display.php';
     }
 
