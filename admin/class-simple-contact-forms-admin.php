@@ -152,7 +152,7 @@ class simple_contact_forms_Admin {
 
 	public function registerwidget() {
 
-		include ('partials/wpb_widget.php');
+		include ('partials/scf_widget.php');
 
 	}
 

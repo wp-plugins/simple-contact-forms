@@ -229,7 +229,6 @@ $wp_list_table->prepare_items();
 					<td>
 						<select name="send_to" id="send_to" class="postform" value="<?=$vals['send_to']?>">
 							<option value="" <?=($vals['send_to']==''?'selected':'')?>>Same Page as form (default)
-							<option disabled>---
 							<?php 
 
 							$cpt = get_post_types(
@@ -237,17 +236,33 @@ $wp_list_table->prepare_items();
 									'_builtin'	=> false,
 									'public'	=> true
 								),
-								'names',
+								'objects',
 								'and'
 							);
 
-							array_unshift($cpt, 'post', 'page');
+							array_unshift(
+								$cpt, 
+								(object) array( 
+									'name'	=> 'post',
+									'label' => 'Posts'
+								),
+								(object) array(
+									'name'	=> 'page',
+									'label' => 'Pages'
+								)
+							);
 
 							foreach ( $cpt as $pt ) {
 
-								if(count($cpt) > 0) echo '<option disabled>---';
+								$posts = get_posts( array(
+									'post_type' 		=> $pt->name,
+									'posts_per_page' 	=> -1,
+									'orderby'			=> 'title',
+									'order'				=> 'ASC'
+								) ); 
 
-								$posts = get_posts( array('post_type' =>$pt) ); 
+								if(count($posts) > 0) echo '<option disabled>---<option disabled><strong>' . $pt->label . '</strong>';
+
 								foreach ( $posts as $page ) {
 								  	$option = '<option value="' . get_page_link( $page->ID ) . '" '. ($vals['send_to']==get_page_link( $page->ID )?'selected':'') . '>';
 									$option .= $page->post_title;
