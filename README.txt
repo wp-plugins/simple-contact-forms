@@ -39,7 +39,7 @@ Yes. Head over to the [GitHub](https://github.com/owenr88/Simple-Contact-Forms) 
 == Changelog ==
 
 = 1.0.4 =
-* Bug fixes on the send to URL
+* Bug fixes on the send to URL in the settings
 
 = 1.0.3 =
 * Allow additional classes for buttons
