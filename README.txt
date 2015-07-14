@@ -38,6 +38,9 @@ Yes. Head over to the [GitHub](https://github.com/owenr88/Simple-Contact-Forms) 
 
 == Changelog ==
 
+= 1.0.5 =
+* Bug Fixes on checkbox items
+
 = 1.0.4 =
 * Bug fixes on the send to URL in the settings
 

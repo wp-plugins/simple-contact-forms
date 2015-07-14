@@ -108,7 +108,7 @@ class scf_Content {
 					                        $nextclass = 'col-md-9';
 					                        $offset = 'col-md-offset-3';
 
-					                    } else {
+					                    } elseif(!$options['labels']) {
 
 					                    	// Check if the field is a selectbox
 					                        if($item['type'] == 'select') {

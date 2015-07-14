@@ -6,7 +6,7 @@ Contributors: owenr88
 Tags: contact forms, enquiry forms, contact, forms
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,11 +41,16 @@ Yes. Head over to the [GitHub](https://github.com/owenr88/Simple-Contact-Forms) 
 
 ## Changelog
 
+### 1.0.5
+* Bug Fixes on checkbox items
+
 ### 1.0.4
-* Bug Fixes
+* Bug fixes on the send to URL in the settings
 
 ### 1.0.3
-* Bug Fixes
+* Allow additional classes for buttons
+* Set default fields when installing
+* Fixing a few small bugs
 
 ### 1.0.2
 * Bug fix with form title
