@@ -69,7 +69,7 @@ class simple_contact_forms {
 	public function __construct() {
 
 		$this->simple_contact_forms = 'simple-contact-forms';
-		$this->version = '1.0.0';
+		$this->version = '1.0.7';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -163,6 +163,7 @@ class simple_contact_forms {
 
 		$this->loader->add_action( 'admin_notices', $plugin_admin, 'create_notice' );
 		$this->loader->add_action( 'widgets_init', $plugin_admin, 'registerwidget' );
+		$this->loader->add_action( 'plugins_loaded', $plugin_admin, 'scf_update_db_check' );
 
 	}
 

@@ -157,7 +157,17 @@ class simple_contact_forms_Admin {
 	}
 
 	public function jquery_ui_sortable() {
+
 		return true;
+
+	}
+
+	public function scf_update_db_check() {
+
+		include ('partials/scf_data.php');
+		$scf_db = new SCF_Data_Management();
+		$scf_db->db_check();
+
 	}
 
 }

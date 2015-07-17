@@ -36,3 +36,9 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'simple-contact-forms/admi
 $options = new SCFOptions();
 
 $options->delete();
+
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'simple-contact-forms/admin/partials/scf_data.php';
+
+$scf_db = new SCF_Data_Management();
+
+$scf_db->deleteTable();
