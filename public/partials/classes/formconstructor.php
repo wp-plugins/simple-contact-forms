@@ -39,7 +39,7 @@ class scf_FormConstructor {
 		require_once 'fields.php';
 		require_once 'formvalidation.php';
 		require_once 'options.php';
-		require_once '../../admin/partials/scf_data.php';
+		//include( plugin_dir_path( __FILE__ ) . '../../../admin/partials/scf_data.php' );
 
 		// Make the passed options an array if it's empty. It sometimes comes through as an empty string.
 		if(!$passedOptions) $passedOptions = array();

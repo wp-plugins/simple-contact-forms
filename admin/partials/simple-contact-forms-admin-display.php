@@ -16,26 +16,35 @@
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 
 <style type="text/css">
-	.wp-list-table .column-col_link_id { width: 8%; }
-	.wp-list-table .column-col_link_label { width: 25%; }
-	.wp-list-table .column-col_link_type { width: 15%; }
-	.wp-list-table .column-col_link_options { width: 25%; }
-	.wp-list-table .column-col_link_required { width: 10%; }
-	.wp-list-table .column-col_link_exclude { width: 10%; }
-	.wp-list-table .column-col_link_delete { width: 7%; }
+	.wp-list-table .column-col_fields_id { width: 8%; }
+	.wp-list-table .column-col_fields_label { width: 25%; }
+	.wp-list-table .column-col_fields_type { width: 15%; }
+	.wp-list-table .column-col_fields_options { width: 25%; }
+	.wp-list-table .column-col_fields_required { width: 10%; }
+	.wp-list-table .column-col_fields_exclude { width: 10%; }
+	.wp-list-table .column-col_fields_delete { width: 7%; }
+
+	.wp-list-table .column-col_completion_time { width: 20%; }
+	.wp-list-table .column-col_completion_data { width: 50%; }
+	.wp-list-table .column-col_completion_location { width: 30%; }
 </style>
 
 <?php 
 
-include ('SCFOptions.php');
+include ('scf_options.php');
 $options = new SCFOptions();
 if( !empty($_POST) ) $options->set();
 $vals = $options->get();
 
-include ('Form_List_Table.php');
-$wp_list_table = new scf_Form_List_Table();
-$wp_list_table->setPassedOptions($vals);
-$wp_list_table->prepare_items();
+include ('scf_fields_table.php');
+$fields_table = new scf_Fields_Table();
+$fields_table->setPassedOptions($vals);
+$fields_table->prepare_items();
+
+include ('scf_completions_table.php');
+$completions_table = new scf_Completions_Table();
+$completions_table->form_id = 0;
+$completions_table->prepare_items();
 
 ?>
 
@@ -321,7 +330,7 @@ $wp_list_table->prepare_items();
 
 	<h3>Fields</h3>
 
-		<?php $wp_list_table->display();?>
+		<?php $fields_table->display();?>
 		<input class="button-secondary add-field" type="button" value="<?php _e('Add a new Field'); ?>" style="float:right;" />
 		<p>PLEASE NOTE: It's strongly adviced that you select at least one field as a Name or Email Address field type so you know who the enquiry is coming from!</p>
 
@@ -330,3 +339,15 @@ $wp_list_table->prepare_items();
 	<input class="button-primary" type="submit" value="<?php _e('Save Fields'); ?>" />
 
 </form>
+
+<div class="clear"></div>
+<br />
+<br />
+
+<hr />
+
+<h3>Completions</h3>
+<?php $completions_table->display();?>
+
+
+

@@ -2,29 +2,31 @@
 
 class SCF_Data_Management {
 
-	private $table;
+	private $wpdb;
+	public $table;
 	private $db_verison;
 
 	function __construct() {
 
-		$this->db_version = '1.0';
-
-		$this->table = $wpdb->prefix . "scf_completions"; 
-
 	    global $wpdb;
+	    $this->wpdb = &$wpdb;
+
+		$this->db_version = '1.3';
+
+		$this->table = $this->wpdb->prefix . "scf_completions"; 
 
 	}
 
 	private function createTable () {
 
-		$charset_collate = $wpdb->get_charset_collate();
+		$charset_collate = $this->wpdb->get_charset_collate();
 
 		$sql = "CREATE TABLE $this->table (
 		  id mediumint(9) NOT NULL AUTO_INCREMENT,
 		  time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 		  form_id tinytext NOT NULL,
 		  data text NOT NULL,
-		  url varchar(55) DEFAULT '' NOT NULL,
+		  location text NOT NULL,
 		  UNIQUE KEY id (id)
 		) $charset_collate;";
 
@@ -57,6 +59,7 @@ class SCF_Data_Management {
 	public function getData () {
 
 		// Return the data
+		return $wpdb->get_results( 'SELECT * FROM $this->table WHERE form_id = 0', OBJECT );
 
 	}
 
@@ -66,13 +69,13 @@ class SCF_Data_Management {
 		$this->db_check();
 
 		// Insert the row
-		$wpdb->insert( 
+		$this->wpdb->insert( 
 			$this->table, 
 			array( 
 				'time' 		=> current_time( 'mysql' ), 
 				'form_id' 	=> $form_id, 
-				'data' 		=> maybe_serialize($data), 
-				'url'		=> get_bloginfo('url') . '/' . $_SERVER[REQUEST_URI],
+				'data' 		=> addslashes($data), 
+				'location'	=> get_bloginfo('url') . '/' . $_SERVER['REQUEST_URI'],
 			) 
 		);
 

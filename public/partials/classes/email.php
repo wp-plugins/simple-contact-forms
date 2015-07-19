@@ -114,12 +114,8 @@ class scf_Email {
         // Write the data to the database
         $scf_db = new SCF_Data_Management();
 
-        // Remove uneccessary fields
-        unset($fields['maths']);
-        unset($fields['recaptcha']);
-
         // Insert the data
-        $scf_db->insertRow($fields, 0);
+        $scf_db->insertRow($this->emailcontent, 0);
 
 	}
 
