@@ -41,6 +41,9 @@ Yes. Head over to the [GitHub](https://github.com/owenr88/Simple-Contact-Forms) 
 
 ## Changelog
 
+### 1.1.1
+* Fixed the destination page to send the form to
+
 ### 1.1.0
 * Submissions are tracked and logged on the settings page
 

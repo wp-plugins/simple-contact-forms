@@ -78,7 +78,7 @@ class scf_Options {
 		$arr['form'] = get_option('scf_form', false);
 
 		// Location for the form to be sent to
-		$arr['send_to_url'] = get_permalink();
+		$arr['send_to_url'] = get_option('scf_send_to', get_permalink());
 
 		// Get the form title
 		$arr['form_title'] = get_option('scf_form_title', '<h2>Enquire now!</h2>');
