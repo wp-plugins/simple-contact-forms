@@ -110,6 +110,11 @@ class simple_contact_forms_Admin {
 
 	}
 
+	/**
+	 * Create a notice to add some fields
+	 *
+	 * @since    1.0.0
+	 */
 	public function create_notice() {
 		
 		// Set the global $post variable
@@ -139,13 +144,23 @@ class simple_contact_forms_Admin {
 
 	}
 
-
+	/**
+	 * Load the menu
+	 *
+	 * @since    1.0.0
+	 */
 	public function simple_contact_forms_menu() {
+
 		//Our class extends the WP_List_Table class, so we need to make sure that it's there
 		if(!class_exists('WP_List_Table')){
 		   require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 		}
+
+		// Include the required files
+
+		// Create the options page
 		add_options_page( 'Simple Contact Forms', 'Simple Contact Forms', 'manage_options', 'simple-contact-forms', 'simple_contact_forms_options' );
+	
 	}
 
 
@@ -172,9 +187,26 @@ class simple_contact_forms_Admin {
 
 }
 
+/**
+ * Create the tabs
+ *
+ * @since    1.2.0
+ */
+function scf_admin_tabs( $current = 'settings' ) {
+    $tabs = array( 'settings' => 'Settings', 'forms' => 'Form', 'completions' => 'Completions' );
+    echo '<div id="icon-themes" class="icon32"><br></div>';
+    echo '<h2 class="nav-tab-wrapper">';
+    foreach( $tabs as $tab => $name ){
+        $class = ( $tab == $current ) ? ' nav-tab-active' : '';
+        echo "<a class='nav-tab$class' href='?page=simple-contact-forms&tab=$tab'>$name</a>";
+    }
+    echo '</h2>';
+}
+
+
 function simple_contact_forms_options() {
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
-	include ('partials/simple-contact-forms-admin-display.php');
+	include ('views/simple-contact-forms-admin-display.php');
 }
