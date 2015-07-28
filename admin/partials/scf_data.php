@@ -41,6 +41,7 @@ class SCF_Data_Management {
 	public function deleteTable () {
 
 		// Delete the table
+		$this->wpdb->query("DROP TABLE IF EXISTS $this->table");
 
 	}
 

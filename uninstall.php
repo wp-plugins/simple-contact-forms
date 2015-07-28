@@ -31,7 +31,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'simple-contact-forms/admin/partials/SCFOptions.php';
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'simple-contact-forms/admin/partials/scf_options.php';
 
 $options = new SCFOptions();
 

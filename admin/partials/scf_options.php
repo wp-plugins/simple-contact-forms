@@ -99,6 +99,9 @@ class SCFOptions {
 		// Delete the fields
 		delete_option('scf_table_fields');
 
+		// Delete the database version
+		delete_option('scf_db_version');
+
 	}
 
 
