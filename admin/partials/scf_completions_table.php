@@ -45,7 +45,8 @@ class scf_Completions_Table extends WP_List_Table {
 	   return $columns= array(
 	      'col_completion_time'=>__('Date/Time'),
 	      'col_completion_data'=>__('Data'),
-	      'col_completion_location'=>__('Page')
+	      'col_completion_location'=>__('Page'),
+	      'col_completion_delete'=>__('')
 	   );
 	}
 
@@ -152,6 +153,15 @@ class scf_Completions_Table extends WP_List_Table {
 
 	            case "col_completion_location": 
 	            	echo '<td '.$attributes.'>'.stripslashes($rec->location).'</td>'; 
+	            	break;
+
+	            case "col_completion_delete": 
+	            	echo '<td '.$attributes.'>
+	            		<form method="post">
+	            			<input type="hidden" name="delete_completion" value="' . $rec->id . '" />
+	            			<input type="submit" name="submit" value="Delete" />
+	            		</form>
+            		</td>'; 
 	            	break;
 	         }
 	      }

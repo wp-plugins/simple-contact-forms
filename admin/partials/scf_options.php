@@ -6,6 +6,8 @@ class SCFOptions {
 	private $options;
 	private $fields;
 	private $defaultFields;
+	private $table_name;
+	private $wpdb;
 	
 
 	function __construct() {
@@ -51,6 +53,12 @@ class SCFOptions {
 	            'exclude' => false
 	        )
 		);
+
+	    global $wpdb;
+	    $this->wpdb = &$wpdb;
+
+       	$completions_cl = new SCF_Data_Management;
+       	$this->table_name = $completions_cl->table;
 
 	}
 
@@ -144,6 +152,21 @@ class SCFOptions {
 				update_option('scf_table_fields', maybe_serialize($fields) );
 
 			}
+
+		}
+
+		if(isset($_POST['delete_completion'])) {
+
+			$id = $_POST['delete_completion'];
+
+			if(!is_numeric($id)) return false;
+
+			$this->wpdb->delete(
+				$this->table_name,
+				array(
+					'id' => $id
+				)
+			);
 
 		}
 

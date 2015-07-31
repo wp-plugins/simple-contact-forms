@@ -19,9 +19,10 @@ $completions_table->prepare_items();
 ?>
 
 <style type="text/css">
-	.wp-list-table .column-col_completion_time { width: 20%; }
+	.wp-list-table .column-col_completion_time { width: 15%; }
 	.wp-list-table .column-col_completion_data { width: 50%; }
-	.wp-list-table .column-col_completion_location { width: 30%; }
+	.wp-list-table .column-col_completion_location { width: 25%; }
+	.wp-list-table .column-col_completion_delete { width: 10%; }
 </style>
 
 

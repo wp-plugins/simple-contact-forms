@@ -76,7 +76,7 @@ class SCF_Data_Management {
 				'time' 		=> current_time( 'mysql' ), 
 				'form_id' 	=> $form_id, 
 				'data' 		=> addslashes($data), 
-				'location'	=> get_bloginfo('url') . '/' . $_SERVER['REQUEST_URI'],
+				'location'	=> $_SERVER['REQUEST_URI'],
 			) 
 		);
 

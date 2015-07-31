@@ -28,7 +28,7 @@ scf_admin_tabs($tab);
 // Load the options
 include( plugin_dir_path( __FILE__ ) . "../partials/scf_options.php" );
 $options = new SCFOptions();
-if( !empty($_POST) && $tab != 'completions' ) $options->set();
+if( !empty($_POST) ) $options->set();
 $vals = $options->get();
 
 ?>
