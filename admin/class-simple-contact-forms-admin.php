@@ -62,7 +62,11 @@ class simple_contact_forms_Admin {
 		$this->version = $version;
 		$this->notice = '';
 
-		var_dump( plugin_dir_path( __FILE__ ) . "partials/scf_completions_table.php");
+		//Our class extends the WP_List_Table class, so we need to make sure that it's there
+		if(!class_exists('WP_List_Table')){
+		   require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+		}
+		
 		include( plugin_dir_path( __FILE__ ) . "partials/scf_completions_table.php" );
 		include( plugin_dir_path( __FILE__ ) . "partials/scf_data.php");
 		include( plugin_dir_path( __FILE__ ) . "partials/scf_fields_table.php" );
@@ -156,13 +160,6 @@ class simple_contact_forms_Admin {
 	 * @since    1.0.0
 	 */
 	public function simple_contact_forms_menu() {
-
-		//Our class extends the WP_List_Table class, so we need to make sure that it's there
-		if(!class_exists('WP_List_Table')){
-		   require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
-		}
-
-		// Include the required files
 
 		// Create the options page
 		add_options_page( 'Simple Contact Forms', 'Simple Contact Forms', 'manage_options', 'simple-contact-forms', 'simple_contact_forms_options' );
