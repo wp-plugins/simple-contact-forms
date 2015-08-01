@@ -37,7 +37,7 @@ $vals = $options->get();
 
 
 	<div class="credits-box">
-		<h3 class="hndle">Simple Contact Forms v1.0.1</h3>
+		<h3 class="hndle">Simple Contact Forms</h3>
 		<div class="inside">
 
 			<h4 class="inner">How to use Simple Contact Forms</h4>
