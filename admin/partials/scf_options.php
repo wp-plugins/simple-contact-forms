@@ -54,12 +54,6 @@ class SCFOptions {
 	        )
 		);
 
-	    global $wpdb;
-	    $this->wpdb = &$wpdb;
-
-       	$completions_cl = new SCF_Data_Management;
-       	$this->table_name = $completions_cl->table;
-
 	}
 
 
@@ -160,6 +154,10 @@ class SCFOptions {
 			$id = $_POST['delete_completion'];
 
 			if(!is_numeric($id)) return false;
+
+	       	$completions_cl = new SCF_Data_Management;
+		    $this->wpdb = $completions_cl->wpdb;
+	       	$this->table_name = $completions_cl->table;
 
 			$this->wpdb->delete(
 				$this->table_name,

@@ -62,6 +62,12 @@ class simple_contact_forms_Admin {
 		$this->version = $version;
 		$this->notice = '';
 
+		var_dump( plugin_dir_path( __FILE__ ) . "partials/scf_completions_table.php");
+		include( plugin_dir_path( __FILE__ ) . "partials/scf_completions_table.php" );
+		include( plugin_dir_path( __FILE__ ) . "partials/scf_data.php");
+		include( plugin_dir_path( __FILE__ ) . "partials/scf_fields_table.php" );
+		include( plugin_dir_path( __FILE__ ) . "partials/scf_options.php" );
+
 	}
 
 	/**
@@ -179,7 +185,6 @@ class simple_contact_forms_Admin {
 
 	public function scf_update_db_check() {
 
-		include ('partials/scf_data.php');
 		$scf_db = new SCF_Data_Management();
 		$scf_db->db_check();
 

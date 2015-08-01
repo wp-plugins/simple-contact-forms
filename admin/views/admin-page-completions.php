@@ -11,7 +11,6 @@
 
 
 // Create the fields table
-include( plugin_dir_path( __FILE__ ) . "../partials/scf_completions_table.php" );
 $completions_table = new scf_Completions_Table();
 $completions_table->form_id = 0;
 $completions_table->prepare_items();

@@ -11,7 +11,6 @@
 
 
 // Create the fields table
-include( plugin_dir_path( __FILE__ ) . "../partials/scf_fields_table.php" );
 $fields_table = new scf_Fields_Table();
 $fields_table->setPassedOptions($vals);
 $fields_table->prepare_items();

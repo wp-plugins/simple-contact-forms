@@ -26,7 +26,6 @@ $tab = isset ( $_GET['tab'] ) ? $_GET['tab'] : 'settings';
 scf_admin_tabs($tab); 
 
 // Load the options
-include( plugin_dir_path( __FILE__ ) . "../partials/scf_options.php" );
 $options = new SCFOptions();
 if( !empty($_POST) ) $options->set();
 $vals = $options->get();
