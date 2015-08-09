@@ -80,7 +80,7 @@ class scf_Email {
         foreach($fields as $field) {
 
             // Set the field content
-        	if( $field['slug']!=='maths' && $field['exclude'] !== true ) $this->addToEmailContents($field);
+        	if( $field['slug']!=='maths' && !$field['exclude'] ) $this->addToEmailContents($field);
 
             // Skip this if the name field contains the words "ABANDON" only
             if( $field['type']=='name' && $field['value'] == "ABANDON" ) $nameIsAbandon = true;

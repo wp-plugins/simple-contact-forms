@@ -25,12 +25,12 @@ class scf_FormValidation {
 	public static function isFormCompleted($fields) {
 
 		// Has the required email or name field been completed?
-		$completed = false;
+		$completed = true;
 
 		// Prove me wrong
         foreach($fields as $field) {
-			if( $field['slug'] == 'email' || $field['slug'] == 'fullname' && !$completed) {
-		        $completed = !empty($field['value']);
+			if( $field['required'] && empty($field['value']) && $completed) {
+		        $completed = false;
 		    };
 		};
 
@@ -62,17 +62,13 @@ class scf_FormValidation {
 
 			} else {
 
-	        	switch ($field['slug']) {
+	        	switch ($field['type']) {
 	        		case 'email':
 						if (!filter_var($field['value'], FILTER_VALIDATE_EMAIL)) $errors[] = 'Invalid email format.';
 	        			break;
 	        		
-	        		case 'fullname':
+	        		case 'name':
 						if (!preg_match("/^[a-zA-Z ]*$/",$field['value'])) $errors[] = 'Only letters and white space allowed in the name.';
-	        			break;
-	        		
-	        		default:
-	        			# code...
 	        			break;
 	        	}
 

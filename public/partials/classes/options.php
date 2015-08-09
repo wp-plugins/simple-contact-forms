@@ -75,7 +75,7 @@ class scf_Options {
 		$arr = array();
 
 		// Use a form?
-		$arr['form'] = get_option('scf_form', false);
+		$arr['form'] = get_option('scf_form', '0');
 
 		// Location for the form to be sent to
 		$arr['send_to_url'] = get_option('scf_send_to', get_permalink());
@@ -93,10 +93,10 @@ class scf_Options {
 		$arr['form_styling'] = get_option('scf_form_styling', 'bootstrap');
 
 		// Does the Bootstrap CDN need to be included?
-		$arr['include_bootstrap'] = get_option('scf_include_bootstrap', ($arr['form_styling'] == 'bootstrap' ? true : false) );
+		$arr['include_bootstrap'] = get_option('scf_include_bootstrap', '0' );
 
 		// Does the FontAwesome CDN need to be included?
-		$arr['include_fontawesome'] = get_option('scf_include_fontawesome', ($arr['form_styling'] == 'bootstrap' ? true : false) );
+		$arr['include_fontawesome'] = get_option('scf_include_fontawesome', '0' );
 
 		// Get the extra class for the submit button
 		$arr['submit_class'] = get_option('scf_submit_class', 'btn-primary');
@@ -108,10 +108,10 @@ class scf_Options {
 		$arr['validation'] = get_option('scf_validation', 'maths');
 
 		// Use a button?
-		$arr['btn'] = (get_option('scf_display_button') == 'true' ? true : false);
+		$arr['btn'] = get_option('scf_display_button');
 
 		// Collapse the form
-		$arr['form_collapsed'] = (get_option('scf_default_collapse') == 'true' && $arr['btn'] ? true : false);
+		$arr['form_collapsed'] = get_option('scf_default_collapse');
 
 		// Get the text for the button
 		$arr['btn_text'] = get_option('scf_button_text', 'Get in touch now');

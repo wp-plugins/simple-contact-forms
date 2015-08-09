@@ -15,20 +15,20 @@ class SCFOptions {
 		$this->options = array();
 
 		$this->fields = array(
-			'form' 					=> true ,
+			'form' 					=> '1' ,
 			'send_to' 				=> '' ,
 			'form_title' 			=> 'Enquire now!' ,
 			'email_subject' 		=> 'Website Enquiry' ,
 			'email_recipients'		=> get_bloginfo('admin_email'),
 			'form_styling' 			=> 'bootstrap' ,
-			'include_bootstrap' 	=> false ,
-			'include_fontawesome' 	=> false ,
+			'include_bootstrap' 	=> '0' ,
+			'include_fontawesome' 	=> '0' ,
 			'submit_class' 			=> 'btn-primary' ,
 			'success_msg' 			=> '<h2 style="text-align: center;">Thanks for completing the form!</h2><p>We will be in touch shortly.</p>' ,
-			'validation_enable' 	=> true ,
+			'validation_enable' 	=> '1' ,
 			'validation'			=> 'maths' ,
-			'display_button' 		=> false ,
-			'default_collapse'		=> false ,
+			'display_button' 		=> '0' ,
+			'default_collapse'		=> '0' ,
 			'button_text'			=> 'Get in touch!' ,
 			'button_class'			=> 'btn-primary' ,
 			'button_icon_side'		=> 'left' ,
@@ -53,6 +53,9 @@ class SCFOptions {
 	            'exclude' => false
 	        )
 		);
+		
+	    global $wpdb;
+	    $this->wpdb = &$wpdb;
 
 	}
 
@@ -60,7 +63,7 @@ class SCFOptions {
 
 	private function getif($slug = '', $default = '') {
 
-		if(!get_option( 'scf_' . $slug )) {
+		if( get_option( 'scf_' . $slug, false ) === false && get_option( 'scf_' . $slug, false ) !== '0') {
 
 			// Set the value for the very first time
 			update_option('scf_' . $slug, $default);
@@ -132,9 +135,9 @@ class SCFOptions {
 				
 				$fields[$r]['options'] = (isset($field['options']) ? $field['options'] : array() );
 				
-				$fields[$r]['required'] = (isset($field['required']) ? true : false);
+				$fields[$r]['required'] = (isset($field['required']) ? '1' : '0');
 				
-				$fields[$r]['exclude'] = (isset($field['exclude']) ? true : false);
+				$fields[$r]['exclude'] = (isset($field['exclude']) ? '1' : '0');
 
 				$r++;
 
@@ -155,9 +158,8 @@ class SCFOptions {
 
 			if(!is_numeric($id)) return false;
 
-	       	$completions_cl = new SCF_Data_Management;
-		    $this->wpdb = $completions_cl->wpdb;
-	       	$this->table_name = $completions_cl->table;
+		   	$completions_cl = new SCF_Data_Management;
+		   	$this->table_name = $completions_cl->table;
 
 			$this->wpdb->delete(
 				$this->table_name,
@@ -180,16 +182,9 @@ class SCFOptions {
 			$this->options[$field] = $this->getif( $field, $default );
 
 		}
-
-		// Set the fields if it's the first time
-		if( !$this->getif('table_fields') ) {
-
-			update_option('scf_table_fields', maybe_serialize($this->defaultFields) );
-
-		}
 			
-		// Get the fields
-		$this->options['fields'] = maybe_unserialize( $this->getif('table_fields') );
+		// Get or set the fields
+		$this->options['fields'] = maybe_unserialize( $this->getif('table_fields', maybe_serialize($this->defaultFields) ) );
 
 		return $this->options;
 

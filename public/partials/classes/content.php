@@ -30,7 +30,7 @@ class scf_Content {
 	public function setVendors($options) {
 
 		// Does it need bootstrap
-		if( $options['include_bootstrap'] == 'true' ) {
+		if( $options['include_bootstrap'] ) {
 
 			// Include Bootstrap styles
 			wp_enqueue_style('scf_bootstrap-css', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css');
@@ -41,7 +41,7 @@ class scf_Content {
 		}
 
 		// Does it need FontAwesome?
-		if( $options['include_fontawesome'] == 'true' ) {
+		if( $options['include_fontawesome'] ) {
 
 			// Include FontAwesome styles
 			wp_enqueue_style('scf_fontawesome-css', '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
@@ -61,7 +61,7 @@ class scf_Content {
 		if( $this->successMessageReady ) return false;
 
 		// Open the wrapping divs
-	    $content = '<div id="colform" class="bs-component collapse' . ($options['form_collapsed'] == true ? '' : ' in' ) . '">';
+	    $content = '<div id="colform" class="bs-component collapse' . ($options['form_collapsed'] ? '' : ' in' ) . '">';
 
 		    // Open the row
 		    $content .= '<div class="row">';
@@ -325,7 +325,7 @@ class scf_Content {
 	            	form = document.forms["simple_contact_form"];';
 
 	            foreach($items as $item) {
-	                if( isset($item['required']) && $item['required'] == true && isset($item['slug']) ) {
+	                if( isset($item['required']) && $item['required'] && isset($item['slug']) ) {
 	                    $script .= '
 	                    $(".validation.'.$item['slug'].'").removeClass( "has-error" );
 	                    if (form["'.$item['slug'].'"].value == "") {

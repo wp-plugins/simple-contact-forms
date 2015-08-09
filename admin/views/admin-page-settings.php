@@ -37,8 +37,8 @@
 					<th></th>
 					<td>
 						<label for="include_bootstrap">
-							<input type="hidden"   name="include_bootstrap" value="false" />
-							<input type="checkbox" name="include_bootstrap" value="true" id="include_bootstrap" <?=($vals['include_bootstrap']=='true'?'checked':'')?>> Include Bootstrap
+							<input type="hidden"   name="include_bootstrap" value="0" />
+							<input type="checkbox" name="include_bootstrap" value="1" id="include_bootstrap" <?=($vals['include_bootstrap']=='1'?'checked':'')?>> Include Bootstrap
 						</label>
 					</td>
 				</tr>
@@ -46,8 +46,8 @@
 					<th></th>
 					<td>
 						<label for="include_fontawesome">
-							<input type="hidden"   name="include_fontawesome" value="false" />
-							<input type="checkbox" name="include_fontawesome" value="true" id="include_fontawesome" <?=($vals['include_fontawesome']=='true'?'checked':'')?>> Include FontAwesome
+							<input type="hidden"   name="include_fontawesome" value="0" />
+							<input type="checkbox" name="include_fontawesome" value="1" id="include_fontawesome" <?=($vals['include_fontawesome']=='1'?'checked':'')?>> Include FontAwesome
 						</label>
 					</td>
 				</tr>
@@ -68,8 +68,8 @@
 					<fieldset>
 						<legend class="screen-reader-text"><span>Form Validation Settings</span></legend>
 						<label for="validation_enable">
-							<input type="hidden"   name="validation_enable" value="false" />
-							<input type="checkbox" name="validation_enable" value="true" id="validation_enable" <?=($vals['validation_enable']=='true'?'checked':'')?> class="do_hide"> Enable Form Validation (Recommended)
+							<input type="hidden"   name="validation_enable" value="0" />
+							<input type="checkbox" name="validation_enable" value="1" id="validation_enable" <?=($vals['validation_enable']=='1'?'checked':'')?> class="do_hide"> Enable Form Validation (Recommended)
 						</label>
 						<br>
 						<div class="show_validation_enable_true hide_validation_enable_false">
@@ -99,14 +99,14 @@
 					<fieldset>
 						<legend class="screen-reader-text"><span>Button Display Settings</span></legend>
 						<label for="display_button">
-							<input type="hidden"   name="display_button" value="false" />
-							<input type="checkbox" name="display_button" value="true" id="display_button" <?=($vals['display_button']=='true'?'checked':'')?> class="do_hide"> Display a button to collapse/uncollapse the form
+							<input type="hidden"   name="display_button" value="0" />
+							<input type="checkbox" name="display_button" value="1" id="display_button" <?=($vals['display_button']=='1'?'checked':'')?> class="do_hide"> Display a button to collapse/uncollapse the form
 						</label>
 						<br>
 						<div class="show_display_button_true hide_display_button_false">
 							<label for="default_collapse">
-								<input type="hidden"   name="default_collapse" value="false" />
-								<input type="checkbox" name="default_collapse" value="true" id="default_collapse" <?=($vals['default_collapse']=='true'?'checked':'')?>> Collapse the form by default
+								<input type="hidden"   name="default_collapse" value="0" />
+								<input type="checkbox" name="default_collapse" value="1" id="default_collapse" <?=($vals['default_collapse']=='1'?'checked':'')?>> Collapse the form by default
 							</label>
 							<br>
 							<label for="button_text">
